@@ -28,5 +28,5 @@ const repCouchDb = new CouchdbReplicationService("tempdb");
 repCouchDb.fromCouch = sourceUrl;
 repCouchDb.toCouch = targetUrl;
 
-repCouchDb.sync();
+repCouchDb.replicate();
 

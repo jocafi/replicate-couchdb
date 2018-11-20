@@ -6,30 +6,46 @@ export class CouchdbReplicationService {
   private db: PouchDB.Database;
   private _fromCouch: string;
   private _toCouch: string;
+  private reading = true;
 
   constructor(tempDatabase: string) {
     this.db = new PouchDB(tempDatabase);
   }
 
-  public sync() {
-    console.log("Start syncing ...");
+  public replicate() {
+    this.reading = true;
+    console.log("Start reading from source %s ...", this._fromCouch);
     const opts = {live: false};
     this.db.replicate.from(this._fromCouch, opts, this.syncResult);
-    this.db.replicate.to(this._toCouch, opts, this.syncResult);
-    console.log("Syncing ...");
   }
 
   syncResult = (error: PouchDB.Core.Error | null, result: ReplicationResultComplete<{}> | null): void => {
     if (error) {
-      console.error("An error occurred...");
+      console.error("\n\nAn error occurred:\n");
       console.error(error);
+      return;
     }
 
-    if (result) {
-      console.log("Results...");
-      console.log(result);
+    if (result && !result.ok) {
+      console.error("\n\nSomething went wrong during the processing:\n");
+      console.error(error);
+      return;
     }
-  };
+    
+    if (result && result.ok && result.status === "complete") {
+      console.log("\n\n%s is completed. Results:\n", (this.reading ? "Reading" : "Writing"));
+      console.log(result);
+
+      if (this.reading) {
+        console.log("\n\nStart writing to target %s ...", this._toCouch);
+        this.reading = false;
+        const opts = {live: false};
+        this.db.replicate.to(this._toCouch, opts, this.syncResult);
+      } else {
+        console.log("\nReplication done successfully! Check the target CouchDB to verify the database.\n");
+      }
+    }
+  }
 
   get toCouch(): string {
     return this._toCouch;
