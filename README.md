@@ -1,2 +1,2 @@
 # replicate-couchddb
-Replicate CouchdDB using PouchDB library
+Replicate CouchdDB using the PouchDB library.

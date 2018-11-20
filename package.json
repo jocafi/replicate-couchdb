@@ -1,0 +1,38 @@
+{
+  "name": "replicate-couchddb",
+  "version": "1.0.0",
+  "author": "Joao Araujo (jocafi)",
+  "license": "MIT",
+  "description": "Replicate CouchdDB using the PouchDB library.",
+  "bugs": {
+    "url": "https://github.com/jocafi/replicate-couchddb/issues"
+  },
+  "homepage": "https://github.com/jocafi/replicate-couchddb#readme",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jocafi/replicate-couchddb.git"
+  },
+  "keywords": [
+    "couchdb",
+    "replication",
+    "pouchdb"
+  ],
+  "scripts": {
+    "clean": "rimraf lib",
+    "clean-all": "rimraf dist",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "tslint-fix": "tslint --fix -c tslint.json -p tsconfig.json"
+  },
+  "dependencies": {
+    "pouchdb": "^7.0.0",
+    "yargs": "^12.0.5"
+  },
+  "devDependencies": {
+    "@types/pouchdb": "^6.3.2",
+    "@types/yargs": "^12.0.1",
+    "rimraf": "^2.6.2"
+  }
+}
