@@ -19,9 +19,10 @@
     "pouchdb"
   ],
   "scripts": {
-    "clean": "rimraf lib",
-    "clean-all": "rimraf dist",
+    "clean": "rimraf dist",
+    "clean-all": "rimraf dist tempdb",
     "build": "tsc",
+    "start": "tsc && node dist/replicate-couchdb.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "tslint-fix": "tslint --fix -c tslint.json -p tsconfig.json"
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@types/pouchdb": "^6.3.2",
     "@types/yargs": "^12.0.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "typescript": "^2.7.2"
   }
 }

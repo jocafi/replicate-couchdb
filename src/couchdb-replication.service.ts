@@ -31,7 +31,7 @@ export class CouchdbReplicationService {
       console.error(error);
       return;
     }
-    
+
     if (result && result.ok && result.status === "complete") {
       console.log("\n\n%s is completed. Results:\n", (this.reading ? "Reading" : "Writing"));
       console.log(result);
