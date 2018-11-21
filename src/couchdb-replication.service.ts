@@ -37,14 +37,18 @@ export class CouchdbReplicationService {
       console.log(result);
 
       if (this.reading) {
-        console.log("\n\nStart writing to target %s ...", this._toCouch);
-        this.reading = false;
-        const opts = {live: false};
-        this.db.replicate.to(this._toCouch, opts, this.syncResult);
+        this.replicateOnly();
       } else {
         console.log("\nReplication done successfully! Check the target CouchDB to verify the database.\n");
       }
     }
+  }
+
+  public replicateOnly() {
+    console.log("\n\nStart writing to target %s ...", this._toCouch);
+    this.reading = false;
+    const opts = {live: false};
+    this.db.replicate.to(this._toCouch, opts, this.syncResult);
   }
 
   get toCouch(): string {

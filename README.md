@@ -41,3 +41,13 @@ The `replicate-couchddb` creates temporarily a local database in the folder *./t
  $ npm run clean-all
 ```
 This command removes the folder *./tempdb*. Otherwise, the existing content will be also replicated to the target CouchDB.
+
+
+## Replication Only
+
+After replicating once, you can replicate the temporarily local database to another CouchDB instances. For this, you have to run teh command below:
+
+```bash
+ $ npm run build
+ $ node dist/replicate-only-couchdb.js <target url>
+```
