@@ -1,4 +1,4 @@
-# replicate-couchddb
+# replicate-couchdb
 Replicate CouchdDB using the PouchDB library.
 
 ## Getting Started
@@ -35,7 +35,7 @@ Examples:
 
 ## Cleaning before new replication
 
-The `replicate-couchddb` creates temporarily a local database in the folder *./tempdb*. Before starting a new replication, certify to clean everything running the command below:
+The `replicate-couchdb` creates temporarily a local database in the folder *./tempdb*. Before starting a new replication, certify to clean everything running the command below:
 
 ```bash
  $ npm run clean-all
