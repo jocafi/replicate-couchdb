@@ -1,5 +1,5 @@
 # replicate-couchdb
-Replicate CouchdDB using the PouchDB library.
+Replicate CouchDB using the PouchDB library.
 
 ## Getting Started
 
@@ -7,7 +7,7 @@ After cloning the project, execute the command below to download all needed libr
 ```bash
  $ npm install
 ```
-Now you can start replicating a CouchDB (source) to another instance of CouchdDB (target).
+Now you can start replicating a CouchDB (source) to another instance of CouchDB (target).
 
 ```bash
  $ npm start <source url> <target url>
